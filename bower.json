@@ -1,0 +1,27 @@
+{
+  "name": "angular-oboe",
+  "version": "0.1.0",
+  "homepage": "https://github.com/RonB/angular-oboe",
+  "description": "Stream JSON data and add it page by page to your controller without having to use pagination serverside.",
+  "main": "index.html",
+  "keywords": [
+    "streaming",
+    "json",
+    "oboe"
+  ],
+  "authors": [
+    "R.E.M. Brinkerink"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "oboe": "~1.15.1",
+    "underscore": "~1.7.0"
+  }
+}

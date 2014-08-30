@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="Contacts">
+    <head>
+        <title>Angular-Oboe Example</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body ng-controller="ContactsCtrl">
+        <h1>Streaming {{contacts.length}} contacts.</h1>
+        <div style="height:300px;width:300px;overflow-y:scroll">
+            <ul>
+                <li ng-repeat="contact in contacts">{{contact.name}}</li>
+            </ul>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+        <script src="../bower_components/oboe/dist/oboe-browser.js"></script>
+        <script src="../bower_components/underscore/underscore.js"></script>
+        <script src="../angular-oboe.js"></script>
+        <script src="app.js"></script>
+        
+    </body>
+</html>
