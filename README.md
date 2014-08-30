@@ -29,12 +29,28 @@ angular.module('myApp', ['ngOboe']);
 
 ## Usage
 
-In your controller:
+In your controller you add data to your scope by assingng the response of the Oboe service.
+The servcie is called with an object that contains the parameters for the Oboe service. 
+They  are the same as the oboe.js API [http://oboejs.com/api].
+The pattern is added to the parameters to select JSON objects returned from the server.
 
 ```javascript
-$scope.myData = Oboe({url: '/api/myData', pattern: '{id}');
+angular.module('MyApp')
+    .controller(['$scope', 'Oboe', function($scope, Oboe) {
+        $scope.myData = Oboe({url: '/api/myData', pattern: '{id}');
+    }]);
 ```
-The parameters for the Oboe service are the same as the oboe.js API [http://oboejs.com/api]
+
+## Run the example
+Make sure you have installed node.js, npm, bower and grunt.
+
+In the bower_compenents/angular-oboe folder run:
+
+    $ npm install
+and 
+    $ bower install 
+
+Then run grunt
 
 ## TODO:
 
@@ -46,6 +62,9 @@ Still to do:
 * documentation
 * talk to Jim Higson about several issues
 * everything I didn't think of yet
+* create better examples
+
+Contributers to the project are very welcome!
 
 ## License
 
