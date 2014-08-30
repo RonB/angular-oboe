@@ -2,6 +2,8 @@
 
 This repo is for distribution on `bower`. 
 
+WARNING: This is in a very early stage. NOT SUITABLE FOR PRODUCTION
+
 ## Install
 
 Install with `bower`:
@@ -29,6 +31,9 @@ In your controller:
 ```javascript
 $scope.myData = Oboe({url: '/api/myData', pattern: '{id}');
 ```
+
+## TODO:
+This factory is in a very early stage.
 
 ## License
 
