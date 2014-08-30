@@ -50,7 +50,7 @@ angular.module('ngOboe', [])
                                     }
                                 })
                                 .done(function() {
-                                    // when the stream is done make surethe last page of nodes is returned
+                                    // when the stream is done make sure the last page of nodes is returned
                                     promise.then(callback(page));
                                 });
                         return promise;
