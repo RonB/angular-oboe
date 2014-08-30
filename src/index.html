@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="Contacts">
+    <head>
+        <title>Angular-Oboe Example With lots of contacts streamed</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <style>
+            .row {
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body ng-controller="ContactsCtrl">
+        <h1>Streaming JSON data with angular-oboe</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contacts with streaming {{contacts.length}}</div>
+                    <div class="panel-body" style="height:400px;overflow-y:scroll">
+                        <div ng-repeat="contact in contacts">{{contact.name}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contacts without streaming {{httpcontacts.length}}</div>
+                    <div class="panel-body" style="height:400px;overflow-y:scroll">
+                        <div ng-repeat="contact in httpcontacts">{{contact.name}}</div>
+                    </div>
+                </div>
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+            <script src="bower_components/oboe/dist/oboe-browser.js"></script>
+            <script src="bower_components/underscore/underscore.js"></script>
+            <script src="angular-oboe.js"></script>
+            <script src="app.js"></script>
+    </body>
+</html>

@@ -24,6 +24,5 @@
   },
   "_source": "git://github.com/jimhigson/oboe.js.git",
   "_target": "~1.15.1",
-  "_originalSource": "oboe",
-  "_direct": true
+  "_originalSource": "oboe"
 }
