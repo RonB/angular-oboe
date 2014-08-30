@@ -51,7 +51,12 @@ and
 
     $ bower install 
 
-Then run grunt
+Then run a local express server
+
+    $ grunt
+
+Now go to a browser and visit http://ocalhost:9000
+
 
 ## TODO:
 
