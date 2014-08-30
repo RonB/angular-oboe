@@ -48,6 +48,7 @@ In the bower_compenents/angular-oboe folder run:
 
     $ npm install
 and 
+
     $ bower install 
 
 Then run grunt
