@@ -4,12 +4,15 @@ This repo is for distribution on `bower`.
 
 WARNING: This is in a very early stage. NOT SUITABLE FOR PRODUCTION
 
+Many thanks to Jim Higson for the terrific oboe.js library.
+See [http://www.oboejs.com]
+
 ## Install
 
-Install with `bower`:
+Install using `bower`:
 
 ```shell
-bower install angular-oboe
+bower install angular-oboe --save
 ```
 
 Add a `<script>` to your `index.html`:
@@ -31,9 +34,18 @@ In your controller:
 ```javascript
 $scope.myData = Oboe({url: '/api/myData', pattern: '{id}');
 ```
+The parameters for the Oboe service are the same as the oboe.js API [http://oboejs.com/api]
 
 ## TODO:
+
 This factory is in a very early stage.
+Still to do:
+
+* error handling
+* test code
+* documentation
+* talk to Jim Higson about several issues
+* everything I didn't think of yet
 
 ## License
 
