@@ -21,7 +21,7 @@
                         <table class="table">
                             <tbody>
                                 <tr ng-repeat="contact in contacts">
-                                    <td><strong>{{contact.name}}</strong><br/>{{contact.address}}<br/><a href="{{contact.email}}">{{contact.email}}</a></td>
+                                    <td><strong>{{contact.name}}</strong><br/>{{contact.address}}<br/><a href="mailto:{{contact.email}}">{{contact.email}}</a></td>
                                     <td>{{contact.greeting}}</td>
                                     <td>{{contact.gender}}</td>
                                 </tr>
@@ -37,7 +37,7 @@
                         <table class="table">
                             <tbody>
                                 <tr ng-repeat="contact in httpcontacts">
-                                    <td><strong>{{contact.name}}</strong><br/>{{contact.address}}<br/><a href="{{contact.email}}">{{contact.email}}</a></td>
+                                    <td><strong>{{contact.name}}</strong><br/>{{contact.address}}<br/><a href="mailto:{{contact.email}}">{{contact.email}}</a></td>
                                     <td>{{contact.greeting}}</td>
                                     <td>{{contact.gender}}</td>
                                 </tr>

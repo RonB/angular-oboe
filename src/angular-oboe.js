@@ -1,9 +1,9 @@
 'use strict';
 angular.module('ngOboe', [])
         .service('Oboe', function(OboeStream) {
-            // the passed parameters object need to have a Url and a filter.
+            // the passed parameters object need to have a Url and a pattern.
             // the url needs to return a json stream. see the oboe documentation
-            // the filter contains an object with 
+            // the patterns contains a path whoch selects json objects by the oboe factory
             return function(params) {
                 // initialize the data
                 var data = [];
