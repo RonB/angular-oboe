@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 });
 router.get('/*', function(req, res) {
         console.log(req.path)
-        res.sendfile('src/' + req.path);
+        res.sendfile('src' + req.path);
 });
 
 
