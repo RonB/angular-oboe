@@ -1,4 +1,4 @@
-# bower-angular-oboe
+# angular-oboe
 
 This repo is for distribution on `bower`. 
 
