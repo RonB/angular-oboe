@@ -50,14 +50,14 @@ angular.module('myApp', ['ngOboe']);
 ## Usage
 
 In your controller you add data to your scope by assingng the response of the Oboe service.
-The servcie is called with an object that contains the parameters for the Oboe service. 
+The service is called with an object that contains the parameters for the Oboe service. 
 They  are the same as the oboe.js API [http://oboejs.com/api].
 The pattern is added to the parameters to select JSON objects returned from the server.
 
 ```javascript
 angular.module('MyApp')
     .controller(['$scope', 'Oboe', function($scope, Oboe) {
-        $scope.myData = Oboe({url: '/api/myData', pattern: '{id}');
+        $scope.myData = Oboe({url: '/api/myData', pattern: '{id}'});
     }]);
 ```
 
