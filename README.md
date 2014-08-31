@@ -11,16 +11,25 @@ See http://www.oboejs.com
 
 ### Try the example
 
+Make sure ypu have the following installed:
+
+* node with npm (for building the example and running the local server)
+* bower (for dependancy management)
+* grunt (for runnoing the node tasks)
+
 ```shell
 git clone https://github.com/RonB/angular-oboe.git
 cd angular-oboe
 npm install
 bower install
+grunt
 ```
 Now go to a browser and visit http://localhost:9000 
 
 
 ### Add module to your project using `bower`
+
+Go to your project folder and run
 
 ```shell
 bower install angular-oboe --save
@@ -29,10 +38,10 @@ bower install angular-oboe --save
 Add a `<script>` to your `index.html`:
 
 ```html
-<script src="/bower_components/angular-oboe/angular-oboe.js"></script>
+<script src="/bower_components/angular-oboe/src/angular-oboe.js"></script>
 ```
 
-And add `ngOboe` as a dependency for your app:
+And add `ngOboe` module to your app:
 
 ```javascript
 angular.module('myApp', ['ngOboe']);
