@@ -12,52 +12,51 @@
         </style>
     </head>
     <body ng-controller="ContactsCtrl">
-        <header>
-        <h1>Streaming JSON data with angular-oboe</h1>
-        </header>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="panel panel-success">
-                    <div class="panel-heading">Contacts with streaming {{contacts.length}}</div>
-                    <div class="panel-body"  style="height:400px;overflow-y:scroll">
-                        <table class="table">
-                            <tbody>
-                                <tr ng-repeat="contact in contacts">
-                                    <td><strong>{{contact.name}}</strong><br/>{{contact.address}}<br/><a href="mailto:{{contact.email}}">{{contact.email}}</a></td>
-                                    <td>{{contact.greeting}}</td>
-                                    <td>{{contact.gender}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+        <div class="container">
+            <header>
+                <h1>Streaming JSON data with angular-oboe</h1>
+                <p>
+                    The "contacts.json" data is loaded twice. <br/>
+                    One is parsed as a stream in the browser using angular-oboe and added page by page.<br>
+                    The other is read as one file and after the response has loaded added to the scope.
+                </p>
+            </header>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Contacts with streaming {{contacts.length}}</div>
+                        <div class="panel-body" style="height:500px;overflow-y:auto;">
+                            <div ng-repeat="contact in contacts">
+                                <div>{{$index + 1}}. <strong>{{contact.name}}</strong><br/>{{contact.address}}<br/><a href="mailto:{{contact.email}}">{{contact.email}}</a></div>
+                                <hr/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">Contacts without streaming {{contacts2.length}}</div>
+                        <div class="panel-body" style="height:500px;overflow-y:auto;">
+                            <div ng-repeat="contact in contacts2">
+                                <div>{{$index + 1}}. <strong>{{contact.name}}</strong><br/>{{contact.address}}<br/><a href="mailto:{{contact.email}}">{{contact.email}}</a></div>
+                                <hr/>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="panel panel-warning">
-                    <div class="panel-heading">Contacts without streaming {{httpcontacts.length}}</div>
-                    <div class="panel-body" style="height:400px;overflow-y:scroll">
-                        <table class="table">
-                            <tbody>
-                                <tr ng-repeat="contact in httpcontacts">
-                                    <td><strong>{{contact.name}}</strong><br/>{{contact.address}}<br/><a href="mailto:{{contact.email}}">{{contact.email}}</a></td>
-                                    <td>{{contact.greeting}}</td>
-                                    <td>{{contact.gender}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+
             <footer class="footer">
                 <div class="container">
                     <p><a href="https://twitter.com/r.brinkerink@brein.nl">@rbrinkerin</a> |
                         <a href="https://https://github.com/RonB/angular-oboe"><img src="github.jpg"> Code on GitHub</a></p>
                 </div>
             </footer>
-            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
-            <script src="bower_components/oboe/dist/oboe-browser.js"></script>
-            <script src="bower_components/underscore/underscore.js"></script>
-            <script src="angular-oboe.js"></script>
-            <script src="app.js"></script>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+        <script src="bower_components/oboe/dist/oboe-browser.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="angular-oboe.js"></script>
+        <script src="app.js"></script>
     </body>
 </html>

@@ -157,11 +157,6 @@ module.exports = function(grunt) {
         src: ['<%= yo.src %>/<%= pkg.name %>.js'],
         dest: '<%= yo.dist %>/<%= pkg.name %>.js'
       }
-      // dist: {
-      //   files: {
-      //     '/.js': '/.js'
-      //   }
-      // }
     },
     concat: {
       options: {
@@ -182,8 +177,9 @@ module.exports = function(grunt) {
         dest: '<%= yo.dist %>/<%= pkg.name %>.min.js'
       }
     }
-  });
 
+  });
+  
   grunt.registerTask('test', [
     'jshint',
     'karma:unit'

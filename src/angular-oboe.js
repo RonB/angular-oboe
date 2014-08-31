@@ -37,8 +37,8 @@ angular.module('ngOboe', [])
                                 .start(function() {
                                     defer.resolve();
                                 })
-                                // for every node containing the specified filter
-                                .node(params.pattern, function(node) {
+                                // for every node containing the specified pattern
+                                .node(params.pattern || '{_id}', function(node) {
                                     //  we push the node to the page
                                     page.push(node);
                                     counter++;

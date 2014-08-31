@@ -4,12 +4,23 @@ This repo is for distribution on `bower`.
 
 WARNING: This is in a very early stage. NOT SUITABLE FOR PRODUCTION
 
-Many thanks to Jim Higson for the terrific oboe.js library.
-See [http://www.oboejs.com]
+Many thanks to Jim Higson for the oboe.js library.
+See http://www.oboejs.com
 
 ## Install
 
-Install using `bower`:
+### Try the example
+
+```shell
+git clone https://github.com/RonB/angular-oboe.git
+cd angular-oboe
+npm install
+bower install
+```
+Now go to a browser and visit http://localhost:9000 
+
+
+### Add module to your project using `bower`
 
 ```shell
 bower install angular-oboe --save
@@ -41,23 +52,6 @@ angular.module('MyApp')
     }]);
 ```
 
-## Run the example
-Make sure you have installed node.js, npm, bower and grunt.
-
-In the bower_compenents/angular-oboe folder run:
-
-    $ npm install
-and 
-
-    $ bower install 
-
-Then run a local express server
-
-    $ grunt
-
-Now go to a browser and visit http://ocalhost:9000
-
-
 ## TODO:
 
 This factory is in a very early stage.
@@ -66,9 +60,9 @@ Still to do:
 * error handling
 * test code
 * documentation
-* talk to Jim Higson about several issues
-* everything I didn't think of yet
-* create better examples
+* ability to add params to the xhr request
+* create more examples
+* talk to Jim Higson about some issues
 
 Contributers to the project are very welcome!
 
