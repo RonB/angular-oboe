@@ -2,7 +2,10 @@
   "name": "angular-oboe",
   "version": "0.1.0",
   "main": "src/server.js",
-  "dependencies": {},
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-express": "^1.4.1"
+  },
   "devDependencies": {
     "connect-livereload": "^0.4.0",
     "grunt": "^0.4.5",
