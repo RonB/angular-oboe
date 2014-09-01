@@ -2,8 +2,10 @@
 angular.module('ngOboe', [])
         .service('Oboe', function(OboeStream) {
             // the passed parameters object need to have a Url and a pattern.
+            // all parameters consumed by the oboe module can be consumed
             // the url needs to return a json stream. see the oboe documentation
-            // the patterns contains a path whoch selects json objects by the oboe factory
+            // the patterns contains a path which selects json objects from the stream
+            // the pagesize parameter determines how many JSON objects need to be received before the controller gets updated. Defaults to 100.
             return function(params) {
                 // initialize the data
                 var data = [];
@@ -28,7 +30,7 @@ angular.module('ngOboe', [])
                         // counter for the received records
                         var counter = 0;
                         // I use an arbitrary page size.
-                        var pagesize = 100;
+                        var pagesize = params.pagesize || 100;
                         // initialize the page of records
                         var page = [];
                         // call the oboe function to start the stream

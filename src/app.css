@@ -1,0 +1,9 @@
+.grid-row {
+    border-radius: 3px;
+    border: 1px solid gray;
+    margin: 1px 20px 1px 2px;
+    padding: 3px;
+}
+.odd {
+    background-color:#DFF0D8
+}

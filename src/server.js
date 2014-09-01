@@ -11,9 +11,9 @@ router.get('/', function(req, res) {
 });
 
 // stream json (no parsing needed)
-router.get('/*.json', function(req, res) {
-    res.download('src' + req.path);
-});
+//router.get('/*.json', function(req, res) {
+//    res.download('src' + req.path);
+//});
 
 // all others
 router.get('/*', function(req, res) {

@@ -1,62 +1,51 @@
 <!DOCTYPE html>
 <html ng-app="Contacts">
+
     <head>
         <title>Angular-Oboe Example With lots of contacts streamed</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <style>
-            .row {
-                margin: 10px;
-            }
-        </style>
+        <link rel="stylesheet" href="app.css">
     </head>
-    <body ng-controller="ContactsCtrl">
+
+    <body>
+
         <div class="container">
             <header>
                 <h1>Streaming JSON data with angular-oboe</h1>
                 <p>
-                    The "contacts.json" data is loaded twice. <br/>
-                    One is parsed as a stream in the browser using angular-oboe and added page by page.<br>
-                    The other is read as one file and after the response has loaded added to the scope.
+                    The default solution for dealing with large amounts of data is server side paging.
+                    This is not always supported and besides that it troubles the and the user because he needs
+                    to flip pages with next and previous buttons, and filtering, sorting and grouping always 
+                    require server hits. <br/>On the other hand, if the data is served in one go the user interface gets updated
+                    after the entire dataset is loaded. By using streaming both problems are addressed.<br/>
+                    Choose "Streaming" to see the data loaded and parsed as a stream in the browser. The parsed data is page by page added to the controller's scope.<br>
+                    Choose "No streaming" to see the same data read as one file and after the response has loaded added to the scope.
                 </p>
             </header>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">Contacts with streaming {{contacts.length}}</div>
-                        <div class="panel-body" style="height:500px;overflow-y:auto;">
-                            <div ng-repeat="contact in contacts">
-                                <div>{{$index + 1}}. <strong>{{contact.name}}</strong><br/>{{contact.address}}<br/><a href="mailto:{{contact.email}}">{{contact.email}}</a></div>
-                                <hr/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="panel panel-danger">
-                        <div class="panel-heading">Contacts without streaming {{contacts2.length}}</div>
-                        <div class="panel-body" style="height:500px;overflow-y:auto;">
-                            <div ng-repeat="contact in contacts2">
-                                <div>{{$index + 1}}. <strong>{{contact.name}}</strong><br/>{{contact.address}}<br/><a href="mailto:{{contact.email}}">{{contact.email}}</a></div>
-                                <hr/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            <button data-ui-sref="streaming" class="btn btn-primary">Streaming</button>
+            <button data-ui-sref="nostreaming" class="btn btn-warning">No streaming</button>
+            <br/><br/>
+            <div data-ui-view></div>
 
             <footer class="footer">
                 <div class="container">
-                    <p><a href="https://twitter.com/r.brinkerink@brein.nl">@rbrinkerin</a> |
-                        <a href="https://https://github.com/RonB/angular-oboe"><img src="github.jpg"> Code on GitHub</a></p>
+                    <br />
+                    <p><a href="https://https://github.com/RonB/angular-oboe"><img src="github.jpg"> Code on GitHub</a></p>
                 </div>
             </footer>
+
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-virtual-scroll/angular-virtual-scroll.min.js"></script>
         <script src="bower_components/oboe/dist/oboe-browser.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="angular-oboe.js"></script>
         <script src="app.js"></script>
+
     </body>
 </html>

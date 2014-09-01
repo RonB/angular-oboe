@@ -22,6 +22,8 @@
   ],
   "dependencies": {
     "oboe": "~1.15.1",
-    "underscore": "~1.7.0"
+    "underscore": "~1.7.0",
+    "angular-ui-router": "~0.2.11",
+    "angular-virtual-scroll": "~0.6.2"
   }
 }
