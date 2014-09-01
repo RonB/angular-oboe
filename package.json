@@ -2,9 +2,9 @@
   "name": "angular-oboe",
   "version": "0.1.0",
   "main": "src/server.js",
-  "dependencies": {
-    "grunt": "^0.4.5",
-    "grunt-express": "^1.4.1"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ronb/angular-oboe.git"
   },
   "devDependencies": {
     "connect-livereload": "^0.4.0",
@@ -19,5 +19,8 @@
     "grunt-open": "^0.2.3",
     "karma": "^0.12.23",
     "matchdep": "^0.3.0"
+  },
+  "dependencies": {
+    "express": "^4.8.7"
   }
 }
