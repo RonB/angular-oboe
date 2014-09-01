@@ -13,7 +13,6 @@ router.get('/', function(req, res) {
 // stream json (no parsing needed)
 router.get('/*.json', function(req, res) {
     res.download('src' + req.path);
-    //res.sendfile('src' + req.path);
 });
 
 // all others
