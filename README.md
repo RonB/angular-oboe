@@ -38,7 +38,7 @@ bower install angular-oboe --save
 Add a `<script>` to your `index.html`:
 
 ```html
-<script src="/bower_components/angular-oboe/src/angular-oboe.js"></script>
+<script src="/bower_components/angular-oboe/dist/angular-oboe.js"></script>
 ```
 
 And add `ngOboe` module to your app:
