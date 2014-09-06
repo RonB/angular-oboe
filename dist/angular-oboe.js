@@ -14,7 +14,7 @@ angular.module('ngOboe', []).service('Oboe', [
       OboeStream.search(params, function (page) {
         // a page of records is received.
         // add each record to the data
-        _.each(page, function (record) {
+        angular.forEach(page, function (record) {
           data.push(record);
         });
       });

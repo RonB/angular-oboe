@@ -170,10 +170,10 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '<%= meta.banner %>'
+        //banner: '<%= meta.banner %>'
       },
       dist: {
-        src: '<%= concat.dist.dest %>',
+        src: '<%= yo.dist %>/<%= pkg.name %>.js',
         dest: '<%= yo.dist %>/<%= pkg.name %>.min.js'
       }
     }
@@ -187,8 +187,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'ngmin:dist' //,
-    //'uglify:dist'
+    'ngmin:dist',
+    'uglify:dist'
   ]);
 
   grunt.registerTask('release', [
@@ -199,6 +199,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('default', [
+      'build',
       'express:dev',
       'connect',
       'open'
