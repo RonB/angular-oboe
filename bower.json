@@ -21,7 +21,7 @@
     "tests"
   ],
   "dependencies": {
-    "oboe": "~1.15.1"
+    "oboe": "2.0.0"
   },
   "devDependencies": {
     "angular-ui-router": "~0.2.11",
