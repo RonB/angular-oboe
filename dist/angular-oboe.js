@@ -48,7 +48,9 @@ angular.module('ngOboe', []).service('Oboe', [
             // initialize the page
             page = [];
           }
-        }).done(function () {
+          // freeup memory
+          return oboe.drop;
+        }).done(function (result) {
           // when the stream is done make sure the last page of nodes is returned
           promise.then(callback(page));
         });

@@ -21,16 +21,16 @@ angular.module('Contacts', ['ngOboe', 'ui.router', 'sf.virtualScroll'])
             $scope.offset = 0;
             // the contacts streamed
             $scope.contacts = Oboe({
-                url: 'contacts.json?time=' + new Date().toJSON(),
-                pattern: '{_id}', // all nodes that have an id property will be included
-                pagesize: 10
+                url: 'contacts2.json?time=' + new Date().toJSON(),
+                pattern: '{index}', // all nodes that have an index property will be included
+                pagesize: 1000
             });
         })
         .controller('NoStreamingCtrl', function($scope, $http) {
             $scope.offset = 0;
             // the contacts read entirely before added to the scope
             $scope.contacts = [];
-            $http.get('contacts.json?time=' + new Date().toJSON())
+            $http.get('contacts2.json?time=' + new Date().toJSON())
                     .success(function(response) {
                         $scope.contacts = response;
                     });

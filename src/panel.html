@@ -18,11 +18,11 @@
     </div>
     <div class="panel-body" style="height:500px;overflow:hidden;">
         <div sf-scroller="y = 0 to contacts.length" ng-model="offset" class="scrollbar"></div>
-        <div ng-repeat="contact in contacts|filter:query|sublist:10:offset" 
+        <div ng-repeat="contact in contacts|filter:query|sublist:7:offset" 
              ng-class-odd="'odd'" 
              ng-class-even="'even'" 
              class="grid-row">
-            <div><strong>{{contact.name}}</strong><br/>{{contact.address}}<br/><a href="mailto:{{contact.email}}">{{contact.email}}</a></div>
+            <div><strong>{{contact.name}}</strong><br/>Age {{contact.age}}<br/><a href="mailto:{{contact.email}}">{{contact.email}}</a></div>
         </div>
     </div>
 </div>
