@@ -14,7 +14,7 @@ See http://www.oboejs.com
 Make sure you have the following installed:
 
 * node with npm (for building the example and running the local server)
-* bower (for dependancy management)
+* bower (for dependency management)
 * grunt (for running the node tasks)
 
 ```shell
