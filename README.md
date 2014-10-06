@@ -2,8 +2,6 @@
 
 This repo is for distribution on `bower`. 
 
-WARNING: This is in a very early stage. NOT SUITABLE FOR PRODUCTION
-
 Many thanks to Jim Higson for the oboe.js library.
 See http://www.oboejs.com
 
@@ -52,15 +50,33 @@ angular.module('myApp', ['ngOboe']);
 In your controller you add data to your scope by assingng the response of the Oboe service.
 The service is called with an object that contains the parameters for the Oboe service. 
 They  are the same as the oboe.js API [http://oboejs.com/api].
-The pattern is added to the parameters to select JSON objects returned from the server.
+The pattern is added to the parameters to select JSON objects that meet that pattern.
 
 ```javascript
 angular.module('MyApp')
     .controller(['$scope', 'Oboe', function($scope, Oboe) {
         $scope.myDate = [];
-        $scope.myData = Oboe({url: '/api/myData', pattern: '{id}'});
+        $scope.myData = Oboe({
+            url: '/api/myData',
+            pattern: '{index}',
+            pagesize: 100
+        });
     }]);
 ```
+## Caveats
+
+Parsing the entire datastream might take longer if the JSON is served in one chunk because parsing the
+data in JS is slower than the standard native parsing in the browser. It might use more CPU than desired in that case.
+
+If you are sorting the data clientside the entire array is sorted with every page.
+Especially with many objects make sure the server sorts the data.
+
+## Solution
+
+The module takes advantage of the defer and promise implementation of Angular and the Oboe.js library.
+The Oboe library parses the JSON stream and recognizes the nodes which meets the criteria in the supplied pattern.
+The module then collects a pagesize of nodes and adds them to the array in the scope.
+After the data is parsed and added to the array the parsed nodes are dropped to free up memory.
 
 ## TODO:
 

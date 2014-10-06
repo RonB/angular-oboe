@@ -18,7 +18,7 @@
     </div>
     <div class="panel-body" style="height:500px;overflow:hidden;">
         <div sf-scroller="y = 0 to contacts.length" ng-model="offset" class="scrollbar"></div>
-        <div ng-repeat="contact in contacts|filter:query|sublist:7:offset" 
+        <div ng-repeat="contact in contacts|filter:query|sublist:7:offset"
              ng-class-odd="'odd'" 
              ng-class-even="'even'" 
              class="grid-row">
