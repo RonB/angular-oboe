@@ -18,19 +18,20 @@ angular.module('Contacts', ['ngOboe', 'ui.router', 'sf.virtualScroll'])
 
         })
         .controller('StreamingCtrl', function($scope, Oboe) {
-            $scope.offset = 0;
+            $scope.offset = 0; // starting offset for virtual-scroll
+            $scope.contacts = [];
             // the contacts streamed
             $scope.contacts = Oboe({
-                url: 'contacts2.json?time=' + new Date().toJSON(),
+                url: 'http://www.webbergen.nl/data/publicatie-website/largejson/contacts2.json',
                 pattern: '{index}', // all nodes that have an index property will be included
-                pagesize: 1000
+                pagesize: 100
             });
         })
         .controller('NoStreamingCtrl', function($scope, $http) {
-            $scope.offset = 0;
+            $scope.offset = 0; // starting offset for virtual-scroll
             // the contacts read entirely before added to the scope
             $scope.contacts = [];
-            $http.get('contacts2.json?time=' + new Date().toJSON())
+            $http.get('http://www.webbergen.nl/data/publicatie-website/largejson/contacts2.json')
                     .success(function(response) {
                         $scope.contacts = response;
                     });

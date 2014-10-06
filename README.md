@@ -38,7 +38,7 @@ bower install angular-oboe --save
 Add a `<script>` to your `index.html`:
 
 ```html
-<script src="/bower_components/angular-oboe/dist/angular-oboe.js"></script>
+<script src="/bower_components/angular-oboe/dist/angular-oboe.min.js"></script>
 ```
 
 And add `ngOboe` module to your app:
@@ -57,6 +57,7 @@ The pattern is added to the parameters to select JSON objects returned from the 
 ```javascript
 angular.module('MyApp')
     .controller(['$scope', 'Oboe', function($scope, Oboe) {
+        $scope.myDate = [];
         $scope.myData = Oboe({url: '/api/myData', pattern: '{id}'});
     }]);
 ```
@@ -70,8 +71,6 @@ Still to do:
 * test code
 * documentation
 * ability to add params to the xhr request
-* create more examples
-* talk to Jim Higson about some issues
 
 Contributers to the project are very welcome!
 
