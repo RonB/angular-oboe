@@ -63,6 +63,33 @@ angular.module('MyApp')
         });
     }]);
 ```
+
+The entire parameter object will be passed to the Oboe funtion [http://oboejs.com/api].
+Use this to accomplish authentication with the backend:
+
+```javascript
+angular.module('MyApp')
+    .controller(['$scope', 'Oboe', function($scope, Oboe) {
+        $scope.myDate = [];
+        $scope.myData = Oboe({
+            url: '/api/myData',
+            pattern: '{index}',
+            pagesize: 100,
+            withCredentials: true,
+            headers: {
+                Authentication: 'Basic '  + btoa('yourusername:yourpassword')
+            }
+        });
+    }]);
+```
+## Solution
+
+The module takes advantage of the defer and promise implementation of Angular and the Oboe.js library.
+The Oboe library parses the JSON stream and recognizes the nodes which meets the criteria in the supplied pattern.
+The module then collects a pagesize of nodes and adds them to the array in the scope.
+After the data is parsed and added to the array the parsed nodes are dropped to free up memory.
+
+
 ## Caveats
 
 Parsing the entire datastream might take longer if the JSON is served in one chunk because parsing the
@@ -71,22 +98,14 @@ data in JS is slower than the standard native parsing in the browser. It might u
 If you are sorting the data clientside the entire array is sorted with every page.
 Especially with many objects make sure the server sorts the data.
 
-## Solution
-
-The module takes advantage of the defer and promise implementation of Angular and the Oboe.js library.
-The Oboe library parses the JSON stream and recognizes the nodes which meets the criteria in the supplied pattern.
-The module then collects a pagesize of nodes and adds them to the array in the scope.
-After the data is parsed and added to the array the parsed nodes are dropped to free up memory.
 
 ## TODO:
-
 This factory is in a very early stage.
 Still to do:
 
 * error handling
 * test code
 * documentation
-* ability to add params to the xhr request
 
 Contributers to the project are very welcome!
 
