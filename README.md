@@ -1,5 +1,5 @@
 # angular-oboe
-
+A service to stream JSON data to an array in your controller by using the Oboe.js library.
 This repo is for distribution on `bower`. 
 
 Many thanks to Jim Higson for the oboe.js library.
@@ -82,7 +82,7 @@ angular.module('MyApp')
         });
     }]);
 ```
-## Solution
+## what it does
 
 The module takes advantage of the defer and promise implementation of Angular and the Oboe.js library.
 The Oboe library parses the JSON stream and recognizes the nodes which meets the criteria in the supplied pattern.
