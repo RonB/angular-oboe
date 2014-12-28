@@ -1,13 +1,24 @@
 # angular-oboe
 A service to stream JSON data to an array in your controller by using the Oboe.js library.
+
 This repo is for distribution on `bower`. 
 
 Many thanks to Jim Higson for the oboe.js library.
 See http://www.oboejs.com
 
+## What it does
+The Oboe service collects a datastream and tries to parse the data as JSON objects. By passing a URL and a pattern to the service any recognized object that matches the pattern is added to an array the size of a the passed pagesize. If the pagesize is reached or the stream has finished the page will be added to the array in your controller.
+
+The module takes advantage of the defer and promise implementation of Angular and the Oboe.js library.
+The Oboe library parses the JSON stream and recognizes the nodes which meets the criteria in the supplied pattern.
+The module then collects a pagesize of nodes and adds them to the array in the scope.
+After the data is parsed and added to the array the parsed nodes are dropped to free up memory.
+
+
+
 ## Install
 
-### Try the example
+### To try the example:
 
 Make sure you have the following installed:
 
@@ -82,13 +93,6 @@ angular.module('MyApp')
         });
     }]);
 ```
-## what it does
-
-The module takes advantage of the defer and promise implementation of Angular and the Oboe.js library.
-The Oboe library parses the JSON stream and recognizes the nodes which meets the criteria in the supplied pattern.
-The module then collects a pagesize of nodes and adds them to the array in the scope.
-After the data is parsed and added to the array the parsed nodes are dropped to free up memory.
-
 
 ## Caveats
 
