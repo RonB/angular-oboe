@@ -81,7 +81,7 @@ Use this to accomplish authentication with the backend:
 ```javascript
 angular.module('MyApp')
     .controller(['$scope', 'Oboe', function($scope, Oboe) {
-        $scope.myDate = [];
+        $scope.myData = [];
         $scope.myData = Oboe({
             url: '/api/myData',
             pattern: '{index}',
