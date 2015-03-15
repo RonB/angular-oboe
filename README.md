@@ -13,7 +13,7 @@ The user will experience your application as very fast, especially on mobile.
 
 The module takes advantage of the defer and promise implementation of Angular and the Oboe.js library.
 The Oboe library parses the JSON stream and recognizes the nodes which meets the criteria in the supplied pattern.
-The module then collects the JSON objects and notifys the promise of the new node.
+The module then collects the JSON objects and notifies the promise of the new node.
 
 ## Install
 
