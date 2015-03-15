@@ -63,6 +63,11 @@ The service is called with an object that contains the parameters for the Oboe s
 They  are the same as the oboe.js API [http://oboejs.com/api].
 The pattern is to select JSON objects that meet that pattern.
 
+To use the data in your controller you call the then function of the returned promise.
+You can pass three functions where the first one is called when the stream of data has ended, 
+the second function is called when there is an error,
+the third function is called when a JSON object meeting the pattern is received.
+
 ```javascript
 angular.module('MyApp')
     .controller(['$scope', 'Oboe', function($scope, Oboe) {
@@ -77,7 +82,7 @@ angular.module('MyApp')
         }, function(node) {
             // node received
             $scope.myData.push(node);
-        };
+        });
     }]);
 ```
 
@@ -95,6 +100,13 @@ angular.module('MyApp')
             headers: {
                 Authentication: 'Basic '  + btoa('yourusername:yourpassword')
             }
+        }).then(function() {
+            // finished loading
+        }, function(error) {
+            // handle errors
+        }, function(node) {
+            // node received
+            $scope.myData.push(node);
         });
     }]);
 ```
