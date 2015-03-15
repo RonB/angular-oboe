@@ -11,7 +11,7 @@ angular.module('ngOboe', [])
         }])
         .factory('OboeStream', ['$q', function ($q) {
                 return {
-                    // the search function calls the oboe module to get the JSON data in a stream
+                    // the get function calls the oboe module to get the JSON data in a stream
                     get: function (params) {
                         var defer = $q.defer();
                         oboe(params)
