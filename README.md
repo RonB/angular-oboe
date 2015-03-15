@@ -7,14 +7,13 @@ Many thanks to Jim Higson for the oboe.js library.
 See http://www.oboejs.com
 
 ## What it does
-The Oboe service collects a datastream and tries to parse the data as JSON objects. By passing a URL, a pattern and a pagesize (optional) to the service, any recognized object that matches the pattern is added to an array the size of a the passed pagesize. If the pagesize is reached or the stream has finished the page will be added to the array in your controller. You can use the data immediately without having to wait untill the entire stream has been received. The user will experience your application as very fast, especially on mobile.
+The Oboe service collects a datastream and tries to parse the data as JSON objects.
+You need pass a URL and a pattern to the service, which will return a promise.
+The user will experience your application as very fast, especially on mobile.
 
 The module takes advantage of the defer and promise implementation of Angular and the Oboe.js library.
 The Oboe library parses the JSON stream and recognizes the nodes which meets the criteria in the supplied pattern.
-The module then collects a pagesize of nodes and adds them to the array in the scope.
-After the data is parsed and added to the array the parsed nodes are dropped to free up memory.
-
-
+The module then collects the JSON objects and notifys the promise of the new node.
 
 ## Install
 
