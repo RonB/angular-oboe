@@ -8,7 +8,7 @@ See http://www.oboejs.com
 
 ## What it does
 The Oboe service collects a datastream and tries to parse the data as JSON objects.
-You need pass a URL and a pattern to the service, which will return a promise.
+You can pass a URL and a pattern to the service, which will return a promise.
 The user will experience your application as very fast, especially on mobile.
 
 The module takes advantage of the defer and promise implementation of Angular and the Oboe.js library.
