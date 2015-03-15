@@ -58,20 +58,26 @@ angular.module('myApp', ['ngOboe']);
 
 ## Usage
 
-In your controller you add data to your scope by assingng the response of the Oboe service.
-The service is called with an object that contains the parameters for the Oboe service. 
+In your controller you add data to your scope by calling the Oboe service. this returns a promise.
+The service is called with an object that contains the parameters for the Oboe service.
 They  are the same as the oboe.js API [http://oboejs.com/api].
-The pattern is added to the parameters to select JSON objects that meet that pattern.
+The pattern is to select JSON objects that meet that pattern.
 
 ```javascript
 angular.module('MyApp')
     .controller(['$scope', 'Oboe', function($scope, Oboe) {
         $scope.myData = [];
-        $scope.myData = Oboe({
+        Oboe({
             url: '/api/myData',
-            pattern: '{index}',
-            pagesize: 100
-        });
+            pattern: '{index}'
+        }).then(function() {
+            // finished loading
+        }, function(error) {
+            // handle errors
+        }, function(node) {
+            // node received
+            $scope.myData.push(node);
+        };
     }]);
 ```
 
@@ -81,11 +87,10 @@ Use this to accomplish authentication with the backend:
 ```javascript
 angular.module('MyApp')
     .controller(['$scope', 'Oboe', function($scope, Oboe) {
-        $scope.myData = [];
-        $scope.myData = Oboe({
+        $scope.myDate = [];
+        Oboe({
             url: '/api/myData',
             pattern: '{index}',
-            pagesize: 100,
             withCredentials: true,
             headers: {
                 Authentication: 'Basic '  + btoa('yourusername:yourpassword')
@@ -98,9 +103,6 @@ angular.module('MyApp')
 
 Parsing the entire datastream might take longer if the JSON is served in one chunk because parsing the
 data in JS is slower than the standard native parsing in the browser. It might use more CPU than desired in that case.
-
-If you are sorting the data clientside the entire array is sorted with every page.
-Especially with many objects make sure the server sorts the data.
 
 
 ## TODO:
