@@ -22,12 +22,12 @@ angular.module('ngOboe', [])
                             // for every node containing the specified pattern or if not specified any node
                             .node(params.pattern || '.', function (node) {
                                 defer.notify(node);
-                                oboe.drop;
+                                return oboe.drop;
                             })
                             .done(function () {
                                 // when the stream is done make sure the last page of nodes is returned
                                 defer.resolve();
-                                oboe.drop;
+                                return oboe.drop;
                             });
                         return defer.promise;
                     }
