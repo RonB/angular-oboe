@@ -19,11 +19,10 @@ angular.module('ngOboe', []).service('Oboe', [
         oboe(params).start(function () {
         }).node(params.pattern || '.', function (node) {
           defer.notify(node);
-          oboe.drop;
+          return oboe.drop;
         }).done(function () {
-          // when the stream is done make sure the last page of nodes is returned
-          defer.resolve();
-          oboe.drop;
+          // make sure oboe cleans up memory
+          return oboe.drop;
         });
         return defer.promise;
       }
