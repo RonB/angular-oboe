@@ -25,8 +25,7 @@ angular.module('ngOboe', [])
                                 return oboe.drop;
                             })
                             .done(function () {
-                                // when the stream is done make sure the last page of nodes is returned
-                                defer.resolve();
+                                // make sure oboe cleans up memory
                                 return oboe.drop;
                             });
                         return defer.promise;
