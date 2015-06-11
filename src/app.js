@@ -21,11 +21,15 @@ angular.module('Contacts', ['ngOboe', 'ui.router', 'sf.virtualScroll'])
             $scope.offset = 0; // starting offset for virtual-scroll
             $scope.contacts = [];
             $scope.status = 'reading....';
+            
             Oboe({
                 url: 'http://www.webbergen.nl/data/publicatie-website/largejson/contacts2.json',
-                pattern: '{index}' // all nodes that have an index property will be included
-            })
-            .then(function() {
+                pattern: '{index}', // all nodes that have an index property will be included
+                start: function(stream) {
+                    // the stream starts. create a reference
+                    $scope.stream = stream;
+                }
+            }).then(function(obj) {
                $scope.status = 'done';
             }, function(error) {
                 // some error

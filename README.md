@@ -60,8 +60,22 @@ angular.module('myApp', ['ngOboe']);
 In your controller you add data to your scope by calling the Oboe service. this returns a promise.
 The service is called with an object that contains the parameters for the Oboe service.
 They  are the same as the oboe.js API [http://oboejs.com/api].
-The pattern is to select JSON objects that meet that pattern.
 
+### url:string
+specify the url from which the json data should be read
+
+
+### pattern:string
+The pattern is to select JSON objects that meet that pattern.
+http://oboejs.com/api#pattern-matching
+
+### start:function
+callback function which is called when the stream starts. It returns a handle to the stream.
+The stream has several functions and events. 
+If you want to abort the stream while loading you can call the abort() method (http://oboejs.com/api#-abort-).
+
+
+## Returned promise
 To use the data in your controller you call the then function of the returned promise.
 You can pass three functions where the first one is called when the stream of data has ended, 
 the second function is called when there is an error,
@@ -73,7 +87,11 @@ angular.module('MyApp')
         $scope.myData = [];
         Oboe({
             url: '/api/myData',
-            pattern: '{index}'
+            pattern: '{index}',
+            start: function(stream) {
+                // handle to the stream
+                $scope.stream = stream;
+            }
         }).then(function() {
             // finished loading
         }, function(error) {
@@ -81,6 +99,10 @@ angular.module('MyApp')
         }, function(node) {
             // node received
             $scope.myData.push(node);
+            if($scope.myData.length === 1000) {
+                $scope.stream.abort();
+                alert('The maximum of one thousand records reached');
+            }
         });
     }]);
 ```

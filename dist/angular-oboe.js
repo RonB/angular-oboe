@@ -16,14 +16,20 @@ angular.module('ngOboe', []).service('Oboe', [
     return {
       get: function (params) {
         var defer = $q.defer();
-        oboe(params).start(function () {
-        }).node(params.pattern || '.', function (node) {
-          defer.notify(node);
-          return oboe.drop;
-        }).done(function () {
-          // make sure oboe cleans up memory
-          return oboe.drop;
-        });
+        var stream = oboe(params).start(function (status, headers) {
+            if (typeof params.start === 'function' && status === 200) {
+              params.start(stream);
+            }
+          }).fail(function (error) {
+            defer.reject(error);
+          }).node(params.pattern || '.', function (node) {
+            defer.notify(node);
+            return oboe.drop;
+          }).done(function () {
+            defer.resolve();
+            // make sure oboe cleans up memory
+            return oboe.drop;
+          });
         return defer.promise;
       }
     };

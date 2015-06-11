@@ -6,6 +6,9 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">total contacts {{contacts.length}} {{ status }}</a>
                 </div>
+                <div class="navbar-header">
+                    <button class="btn btn-default" ng-show="stream" ng-click="stream.abort()">stop the stream</button>
+                </div>
                 <form class="navbar-form pull-right" role="search">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search" ng-model="query">
