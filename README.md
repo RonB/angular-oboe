@@ -1,4 +1,6 @@
 # angular-oboe
+
+[![Join the chat at https://gitter.im/RonB/angular-oboe](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/RonB/angular-oboe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 A service to stream JSON data to an array in your controller by using the Oboe.js library.
 
 This repo is for distribution on `bower`. 
