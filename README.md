@@ -59,29 +59,32 @@ angular.module('myApp', ['ngOboe']);
 
 ## Usage
 
-In your controller you add data to your scope by calling the Oboe service. this returns a promise.
+In your controller you add data to your scope by calling the Oboe service. This returns a promise.
 The service is called with an object that contains the parameters for the Oboe service.
 They  are the same as the oboe.js API [http://oboejs.com/api].
 
 ### url:string
 specify the url from which the json data should be read
 
-
 ### pattern:string
 The pattern is to select JSON objects that meet that pattern.
 http://oboejs.com/api#pattern-matching
 
 ### start:function
-callback function which is called when the stream starts. It returns a handle to the stream.
+Callback function which is called when the stream starts with a handle to the stream as a parameter.
 The stream has several functions and events. 
-If you want to abort the stream while loading you can call the abort() method (http://oboejs.com/api#-abort-).
+i.e: If you want to abort the stream while loading you can call the abort() method (http://oboejs.com/api#-abort-).
 
+### done:function
+Callback function which is called when the stream end.
 
 ## Returned promise
 To use the data in your controller you call the then function of the returned promise.
-You can pass three functions where the first one is called when the stream of data has ended, 
-the second function is called when there is an error,
-the third function is called when a JSON object meeting the pattern is received.
+
+You can pass three functions:
+1. The first one will never be called as the service will not resolve the promise. Specify an empty function.
+2. The second function is called when there is an error,
+3. The third function is called when a JSON object meeting the pattern is received. Use this function add the object to your scope.
 
 ```javascript
 angular.module('MyApp')
@@ -93,6 +96,10 @@ angular.module('MyApp')
             start: function(stream) {
                 // handle to the stream
                 $scope.stream = stream;
+                $scope.status = 'started';
+            },
+            done: function() {
+                $scope.status = 'done';
             }
         }).then(function() {
             // finished loading

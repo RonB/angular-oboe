@@ -26,7 +26,9 @@ angular.module('ngOboe', []).service('Oboe', [
             defer.notify(node);
             return oboe.drop;
           }).done(function () {
-            defer.resolve();
+            if (typeof params.done === 'function') {
+              params.done();
+            }
             // make sure oboe cleans up memory
             return oboe.drop;
           });
