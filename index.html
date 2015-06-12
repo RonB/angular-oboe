@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Angular-oboe : Stream JSON data ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Angular-oboe</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/RonB/angular-oboe">View on GitHub</a>
+
+          <h1 id="project_title">Angular-oboe</h1>
+          <h2 id="project_tagline">Stream JSON data </h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/RonB/angular-oboe/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/RonB/angular-oboe/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="angular-oboe" class="anchor" href="#angular-oboe" aria-hidden="true"><span class="octicon octicon-link"></span></a>angular-oboe</h1>
+
+<p><a href="https://gitter.im/RonB/angular-oboe?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/RonB/angular-oboe"></a></p>
+
+<p>A service to stream JSON data to an array in your controller by using the Oboe.js library.</p>
+
+<p>This repo is for distribution on <code>bower</code>. </p>
+
+<p>Many thanks to Jim Higson for the oboe.js library.
+See <a href="http://www.oboejs.com">http://www.oboejs.com</a></p>
+
+<h2>
+<a id="what-it-does" class="anchor" href="#what-it-does" aria-hidden="true"><span class="octicon octicon-link"></span></a>What it does</h2>
+
+<p>The Oboe service collects a datastream and tries to parse the data as JSON objects.
+You can pass a URL and a pattern to the service, which will return a promise. By processing the notification immediately in your scope, the user will experience your application as very fast, especially on mobile.</p>
+
+<p>The module takes advantage of the defer and promise implementation of Angular and the Oboe.js library.
+The Oboe library parses the JSON stream and recognizes the nodes which meets the criteria in the supplied pattern.
+The module then collects the JSON objects and notifies the promise of the new node.</p>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<h3>
+<a id="to-try-the-example" class="anchor" href="#to-try-the-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>To try the example:</h3>
+
+<p>Make sure you have the following installed:</p>
+
+<ul>
+<li>node with npm (for building the example and running the local server)</li>
+<li>bower (for dependency management)</li>
+<li>grunt (for running the node tasks)</li>
+</ul>
+
+<div class="highlight highlight-shell"><pre>git clone https://github.com/RonB/angular-oboe.git
+<span class="pl-c1">cd</span> angular-oboe
+npm install
+bower install
+grunt</pre></div>
+
+<p>Now go to a browser and visit http://localhost:9000 </p>
+
+<h3>
+<a id="add-module-to-your-project-using-bower" class="anchor" href="#add-module-to-your-project-using-bower" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add module to your project using <code>bower</code>
+</h3>
+
+<p>Go to your project folder and run</p>
+
+<div class="highlight highlight-shell"><pre>bower install angular-oboe --save</pre></div>
+
+<p>Add a <code>&lt;script&gt;</code> to your <code>index.html</code>:</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>/bower_components/angular-oboe/dist/angular-oboe.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p>And add <code>ngOboe</code> module to your app:</p>
+
+<div class="highlight highlight-javascript"><pre>angular.module(<span class="pl-s"><span class="pl-pds">'</span>myApp<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>ngOboe<span class="pl-pds">'</span></span>]);</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>In your controller you add data to your scope by calling the Oboe service. This returns a promise.
+The service is called with an object that contains the parameters for the Oboe service.
+They  are the same as the oboe.js API [<a href="http://oboejs.com/api">http://oboejs.com/api</a>].</p>
+
+<h3>
+<a id="urlstring" class="anchor" href="#urlstring" aria-hidden="true"><span class="octicon octicon-link"></span></a>url:string</h3>
+
+<p>specify the url from which the json data should be read</p>
+
+<h3>
+<a id="patternstring" class="anchor" href="#patternstring" aria-hidden="true"><span class="octicon octicon-link"></span></a>pattern:string</h3>
+
+<p>The pattern is to select JSON objects that meet that pattern.
+<a href="http://oboejs.com/api#pattern-matching">http://oboejs.com/api#pattern-matching</a></p>
+
+<h3>
+<a id="startfunction" class="anchor" href="#startfunction" aria-hidden="true"><span class="octicon octicon-link"></span></a>start:function</h3>
+
+<p>Callback function which is called when the stream starts with a handle to the stream as a parameter.
+The stream has several functions and events. 
+i.e: If you want to abort the stream while loading you can call the abort() method (<a href="http://oboejs.com/api#-abort-">http://oboejs.com/api#-abort-</a>).</p>
+
+<h3>
+<a id="donefunction" class="anchor" href="#donefunction" aria-hidden="true"><span class="octicon octicon-link"></span></a>done:function</h3>
+
+<p>Callback function which is called when the stream end.</p>
+
+<h2>
+<a id="returned-promise" class="anchor" href="#returned-promise" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returned promise</h2>
+
+<p>To use the data in your controller you call the then function of the returned promise.</p>
+
+<p>You can pass three functions:
+1. The first one will never be called as the service will not resolve the promise. Specify an empty function.
+2. The second function is called when there is an error,
+3. The third function is called when a JSON object meeting the pattern is received. Use this function add the object to your scope.</p>
+
+<div class="highlight highlight-javascript"><pre>angular.module(<span class="pl-s"><span class="pl-pds">'</span>MyApp<span class="pl-pds">'</span></span>)
+    .controller([<span class="pl-s"><span class="pl-pds">'</span>$scope<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>Oboe<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">$scope</span>, <span class="pl-smi">Oboe</span>) {
+        $scope.myData <span class="pl-k">=</span> [];
+        Oboe({
+            url<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>/api/myData<span class="pl-pds">'</span></span>,
+            pattern<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>{index}<span class="pl-pds">'</span></span>,
+            <span class="pl-en">start</span>: <span class="pl-k">function</span>(<span class="pl-smi">stream</span>) {
+                <span class="pl-c">// handle to the stream</span>
+                $scope.stream <span class="pl-k">=</span> stream;
+                $scope.<span class="pl-c1">status</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>started<span class="pl-pds">'</span></span>;
+            },
+            <span class="pl-en">done</span>: <span class="pl-k">function</span>() {
+                $scope.<span class="pl-c1">status</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>done<span class="pl-pds">'</span></span>;
+            }
+        }).then(<span class="pl-k">function</span>() {
+            <span class="pl-c">// finished loading</span>
+        }, <span class="pl-k">function</span>(<span class="pl-smi">error</span>) {
+            <span class="pl-c">// handle errors</span>
+        }, <span class="pl-k">function</span>(<span class="pl-smi">node</span>) {
+            <span class="pl-c">// node received</span>
+            $scope.myData.<span class="pl-c1">push</span>(node);
+            <span class="pl-k">if</span>($scope.myData.<span class="pl-c1">length</span> <span class="pl-k">===</span> <span class="pl-c1">1000</span>) {
+                $scope.stream.<span class="pl-c1">abort</span>();
+                <span class="pl-c1">alert</span>(<span class="pl-s"><span class="pl-pds">'</span>The maximum of one thousand records reached<span class="pl-pds">'</span></span>);
+            }
+        });
+    }]);</pre></div>
+
+<p>The entire parameter object will be passed to the Oboe funtion [<a href="http://oboejs.com/api">http://oboejs.com/api</a>].
+Use this to accomplish authentication with the backend:</p>
+
+<div class="highlight highlight-javascript"><pre>angular.module(<span class="pl-s"><span class="pl-pds">'</span>MyApp<span class="pl-pds">'</span></span>)
+    .controller([<span class="pl-s"><span class="pl-pds">'</span>$scope<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>Oboe<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">$scope</span>, <span class="pl-smi">Oboe</span>) {
+        $scope.myData <span class="pl-k">=</span> [];
+        Oboe({
+            url<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>/api/myData<span class="pl-pds">'</span></span>,
+            pattern<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>{index}<span class="pl-pds">'</span></span>,
+            withCredentials<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+            headers<span class="pl-k">:</span> {
+                Authentication<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Basic <span class="pl-pds">'</span></span>  <span class="pl-k">+</span> <span class="pl-c1">btoa</span>(<span class="pl-s"><span class="pl-pds">'</span>yourusername:yourpassword<span class="pl-pds">'</span></span>)
+            }
+        }).then(<span class="pl-k">function</span>() {
+            <span class="pl-c">// finished loading</span>
+        }, <span class="pl-k">function</span>(<span class="pl-smi">error</span>) {
+            <span class="pl-c">// handle errors</span>
+        }, <span class="pl-k">function</span>(<span class="pl-smi">node</span>) {
+            <span class="pl-c">// node received</span>
+            $scope.myData.<span class="pl-c1">push</span>(node);
+        });
+    }]);</pre></div>
+
+<h2>
+<a id="caveats" class="anchor" href="#caveats" aria-hidden="true"><span class="octicon octicon-link"></span></a>Caveats</h2>
+
+<p>Parsing the entire datastream might take longer if the JSON is served in one chunk because parsing the
+data in JS is slower than the standard native parsing in the browser. It might use more CPU than desired in that case.</p>
+
+<h2>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span class="octicon octicon-link"></span></a>TODO:</h2>
+
+<p>This factory is in a very early stage.
+Still to do:</p>
+
+<ul>
+<li>error handling</li>
+<li>test code</li>
+<li>documentation</li>
+</ul>
+
+<p>Contributers to the project are very welcome!</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>The MIT License</p>
+
+<p>Copyright (c) 2010-2012 Google, Inc. <a href="http://angularjs.org">http://angularjs.org</a></p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Angular-oboe maintained by <a href="https://github.com/RonB">RonB</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
