@@ -82,9 +82,10 @@ Callback function which is called when the stream end.
 To use the data in your controller you call the then function of the returned promise.
 
 You can pass three functions:
+
 1. The first one will never be called as the service will not resolve the promise. Specify an empty function.
 2. The second function is called when there is an error,
-3. The third function is called when a JSON object meeting the pattern is received. Use this function add the object to your scope.
+3. The third function is called when a JSON object meeting the pattern is received. Use this function to add the object to your scope.
 
 ```javascript
 angular.module('MyApp')
