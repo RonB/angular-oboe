@@ -33,6 +33,8 @@ angular.module('ngOboe', [])
                                     if (typeof params.done === 'function') {
                                         params.done();
                                     }
+                                    // resolve the promise
+                                    defer.resolve();
                                     // make sure oboe cleans up memory
                                     return oboe.drop;
                                 });
