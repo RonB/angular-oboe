@@ -1,6 +1,6 @@
 {
   "name": "angular-oboe",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "main": "src/server.js",
   "repository": {
     "type": "git",
