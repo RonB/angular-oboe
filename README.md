@@ -48,6 +48,7 @@ bower install angular-oboe --save
 Add a `<script>` to your `index.html`:
 
 ```html
+<script src="/bower_components/oboe/dist/oboe-browser.min.js"></script>
 <script src="/bower_components/angular-oboe/dist/angular-oboe.min.js"></script>
 ```
 
