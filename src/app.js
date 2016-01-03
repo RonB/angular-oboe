@@ -22,7 +22,7 @@ angular.module('Contacts', ['ngOboe', 'ui.router', 'sf.virtualScroll'])
             $scope.contacts = [];
           
             Oboe({
-                url: 'http://www.webbergen.nl/data/publicatie-website/largejson/contacts2.json',
+                url: 'https://raw.githubusercontent.com/RonB/angular-oboe/master/src/contacts2.json',
                 pattern: '{index}', // all nodes that have an index property will be included
                 start: function(stream) {
                     // the stream starts. create a reference
