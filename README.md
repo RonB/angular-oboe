@@ -77,7 +77,7 @@ The stream has several functions and events.
 i.e: If you want to abort the stream while loading you can call the abort() method (http://oboejs.com/api#-abort-).
 
 ### done:function
-Callback function which is called when the stream end.
+Callback function which is called when the stream ends.
 
 ## Returned promise
 To use the data in your controller you call the then function of the returned promise.
@@ -104,7 +104,7 @@ angular.module('MyApp')
                 $scope.status = 'done';
             }
         }).then(function() {
-            // finished loading
+            // never called
         }, function(error) {
             // handle errors
         }, function(node) {
