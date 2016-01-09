@@ -100,7 +100,7 @@ angular.module('MyApp')
                 $scope.stream = stream;
                 $scope.status = 'started';
             },
-            done: function(JSON) {
+            done: function(parsedJSON) {
                 $scope.status = 'done';
             }
         }).then(function() {
