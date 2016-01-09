@@ -33,7 +33,7 @@ angular.module('Contacts', ['ngOboe', 'ui.router', 'sf.virtualScroll'])
                     $scope.status = 'done';
                 }
             }).then(function() {
-                // not used
+                // stream ends
             }, function(error) {
                 // some error
             }, function(record) {

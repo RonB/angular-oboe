@@ -59,7 +59,6 @@ angular.module('myApp', ['ngOboe']);
 ```
 
 ## Usage
-
 In your controller you add data to your scope by calling the Oboe service. This returns a promise.
 The service is called with an object that contains the parameters for the Oboe service.
 They  are the same as the oboe.js API [http://oboejs.com/api].
@@ -77,17 +76,17 @@ The stream has several functions and events.
 i.e: If you want to abort the stream while loading you can call the abort() method (http://oboejs.com/api#-abort-).
 
 ### done:function
-Callback function which is called when the stream ends. 
-If your datastream is not made up of an array, but of multiple JSON objects, then this function is called multiple times with the parsed JSON as a parameter.
+Callback function which is called when the stream ends or,
+if your datastream is not closed but streams multiple JSON objects, then this function is called every time a JSON object is parsed, with the parsed JSON as a parameter.
 
 ## Returned promise
-To use the data in your controller you call the then function of the returned promise.
+To use the data in your controller you call the 'then' function of the returned promise.
 
 You can pass three functions:
 
-1. The first one will never be called as the service will not resolve the promise. Specify an empty function.
-2. The second function is called when there is an error,
-3. The third function is called when a JSON object meeting the pattern is received. Use this function to add the object to your scope.
+1. The first function is called after the Oboe stream finishes. In some cases however, if the parsed has has multiple JSON objects, you use the 'done' callback. The promise will only be resolved resolved once.
+2. The second function is called when an error occurs,
+3. The third function is called when a JSON object meeting the pattern is received. Use this function to add the received object to your scope.
 
 ```javascript
 angular.module('MyApp')
@@ -105,7 +104,7 @@ angular.module('MyApp')
                 $scope.status = 'done';
             }
         }).then(function() {
-            // never called
+            // promise is resolved
         }, function(error) {
             // handle errors
         }, function(node) {
@@ -134,7 +133,7 @@ angular.module('MyApp')
                 Authentication: 'Basic '  + btoa('yourusername:yourpassword')
             }
         }).then(function() {
-            // never called
+            // promise is resolved
         }, function(error) {
             // handle errors
         }, function(node) {

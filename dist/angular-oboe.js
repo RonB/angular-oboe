@@ -30,7 +30,7 @@ angular.module('ngOboe', []).service('Oboe', [
               params.done(parsedJSON);
             }
             // resolve the promise
-            defer.resolve();
+            defer.resolve(parsedJSON);
             // make sure oboe cleans up memory
             return oboe.drop;
           });
