@@ -29,7 +29,7 @@ angular.module('Contacts', ['ngOboe', 'ui.router', 'sf.virtualScroll'])
                     $scope.stream = stream;
                     $scope.status = 'reading....';
                 },
-                done: function() {
+                done: function(parsedJSON) {
                     $scope.status = 'done';
                 }
             }).then(function() {

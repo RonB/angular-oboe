@@ -1,6 +1,6 @@
 {
   "name": "angular-oboe",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "homepage": "https://github.com/RonB/angular-oboe",
   "description": "Stream JSON data and add it page by page to your controller without having to use pagination serverside.",
   "main": "dist/angular-oboe.js",

@@ -77,7 +77,8 @@ The stream has several functions and events.
 i.e: If you want to abort the stream while loading you can call the abort() method (http://oboejs.com/api#-abort-).
 
 ### done:function
-Callback function which is called when the stream ends. The function is called with the parsedJSON parameter, returning the entire json received.
+Callback function which is called when the stream ends. 
+If your datastream is not made up of an array, but of multiple JSON objecs, than this function is called multiple times with the parsed JSON as a parameter.
 
 ## Returned promise
 To use the data in your controller you call the then function of the returned promise.
@@ -100,7 +101,7 @@ angular.module('MyApp')
                 $scope.stream = stream;
                 $scope.status = 'started';
             },
-            done: function() {
+            done: function(JSON) {
                 $scope.status = 'done';
             }
         }).then(function() {
@@ -133,7 +134,7 @@ angular.module('MyApp')
                 Authentication: 'Basic '  + btoa('yourusername:yourpassword')
             }
         }).then(function() {
-            // finished loading
+            // never called
         }, function(error) {
             // handle errors
         }, function(node) {
