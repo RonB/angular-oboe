@@ -84,7 +84,7 @@ To use the data in your controller you call the 'then' function of the returned 
 
 You can pass three functions:
 
-1. The first function is called after the Oboe stream finishes. In some cases however, if the stream has multiple JSON objects, you use the 'done' callback. The promise will only be resolved resolved once.
+1. The first function is called after the Oboe stream finishes. In some cases however, if the stream has multiple JSON objects, you use the 'done' callback. The promise will only be resolved once.
 2. The second function is called when an error occurs,
 3. The third function is called when a JSON object meeting the pattern is received. Use this function to add the received object to your scope.
 
