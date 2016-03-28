@@ -2,9 +2,9 @@
 
 [![Join the chat at https://gitter.im/RonB/angular-oboe](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/RonB/angular-oboe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-A service to stream JSON data to an array in your controller by using the Oboe.js library.
+A service to stream JSON data in to your controller.
 
-This repo is for distribution on `bower`. 
+This repo is for distribution on `bower`.
 
 Many thanks to Jim Higson for the oboe.js library.
 See http://www.oboejs.com
@@ -150,8 +150,6 @@ data in JS is slower than the standard native parsing in the browser. It might u
 
 
 ## TODO:
-This factory is in a very early stage.
-Still to do:
 
 * error handling
 * test code
