@@ -7,7 +7,7 @@ A service to stream JSON data in to your controller.
 This repo is for distribution on `bower`.
 
 Many thanks to Jim Higson for the oboe.js library.
-See http://www.oboejs.com
+See http://oboejs.com
 
 ## What it does
 The Oboe service collects a datastream and tries to parse the data as JSON objects.
