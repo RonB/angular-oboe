@@ -22,6 +22,9 @@ angular.module('ngOboe', [])
                                     }
                                 })
                                 .fail(function (error) {
+                                    if (typeof params.fail === 'function') {
+                                        params.fail(error);
+                                    }
                                     defer.reject(error);
                                 })
                                 // for every node containing the specified pattern or if not specified any node

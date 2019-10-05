@@ -79,6 +79,9 @@ i.e: If you want to abort the stream while loading you can call the abort() meth
 Callback function which is called when the stream ends or,
 if your datastream is not closed but streams multiple JSON objects, then this function is called every time a JSON object is parsed, with the parsed JSON as a parameter.
 
+### fail:function
+Callback function which is called when the stream has an error. eg, if there is a 4xx or 5xx error. There is an error object passed to this function.
+
 ## Returned promise
 To use the data in your controller you call the 'then' function of the returned promise.
 
