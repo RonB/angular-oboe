@@ -21,6 +21,9 @@ angular.module('ngOboe', []).service('Oboe', [
               params.start(stream);
             }
           }).fail(function (error) {
+            if (typeof params.fail === 'function') {
+              params.fail(error);
+            }
             defer.reject(error);
           }).node(params.pattern || '.', function (node) {
             defer.notify(node);
